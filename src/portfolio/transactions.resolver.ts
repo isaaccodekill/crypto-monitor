@@ -6,6 +6,7 @@ import {
 import { Transaction } from './models/entities/Transaction';
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { TransactionService } from './services/Transaction.service';
+import { CreateTransactionDto } from './models/dto/Transaction/CreateTransaction';
 
 @Resolver((of) => Transaction)
 export class TransactionsResolver {
@@ -21,7 +22,15 @@ export class TransactionsResolver {
     @Args('createTransactionInput')
     createTransactionInput: CreateTransactionInput,
   ): Promise<Transaction> {
-    return this.transactionsService.createTransaction(createTransactionInput);
+    const createTransactionDto = new CreateTransactionDto()
+    createTransactionDto.setTransactionType(createTransactionInput.type)
+    createTransactionDto.setDate(createTransactionInput.date)
+    createTransactionDto.setAmount(createTransactionInput.amount)
+    createTransactionDto.setRemarks(createTransactionInput.remarks)
+    createTransactionDto.setCoinId(createTransactionInput.coinId)
+    createTransactionDto.setPriceAtTransaction(createTransactionInput.priceAtTransaction)
+
+    return this.transactionsService.createTransaction(createTransactionDto);
   }
 
   @Mutation((returns) => Transaction)

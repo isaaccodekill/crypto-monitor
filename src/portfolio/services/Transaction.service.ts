@@ -1,18 +1,21 @@
+import { CreateTransactionDto } from "../models/dto/Transaction/CreateTransaction";
+import { Transaction } from "../models/entities/Transaction";
+
 export class TransactionService {
 
-    getTransactions(): any {
+    getTransactions(): Transaction[] {
         throw new Error('Method not implemented.');
     }
 
-    createTransaction(createTransactionInput: any): any {
+    createTransaction(createTransactionDto: CreateTransactionDto): Transaction {
         throw new Error('Method not implemented.');
     }
 
-    updateTransaction(updateTransactionInput: any): any {
+    updateTransaction(updateTransactionInput: any): Transaction {
         throw new Error('Method not implemented.');
     }
 
-    deleteTransaction(deleteTransactionInput: any): any {
+    deleteTransaction(deleteTransactionInput: any): Transaction {
         throw new Error('Method not implemented.');
     }
 

@@ -1,0 +1,62 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateTransactionInput {
+  amount: Float!
+  coinId: String!
+  date: DateTime!
+  priceAtTransaction: Float!
+  type: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DeleteTransactionInput {
+  id: String!
+}
+
+type Mutation {
+  createTransaction(createTransactionInput: CreateTransactionInput!): Transaction!
+  deleteTransaction(deleteTransactionInput: DeleteTransactionInput!): Transaction!
+  updateTransaction(updateTransactionInput: UpdateTransactionInput!): Transaction!
+}
+
+type PortfolioEntry {
+  amountOwned: Float!
+  coinId: String!
+  id: String!
+  priceBought: Float!
+  transactions: [Transaction!]!
+}
+
+type Query {
+  getPortfolioEntries: [PortfolioEntry!]!
+  getTransactions: [Transaction!]!
+}
+
+type Transaction {
+  amount: Float!
+  coinId: String!
+  date: DateTime!
+  id: String!
+  portfolioEntry: PortfolioEntry!
+  price: Float!
+  type: TransactionType!
+}
+
+"""The type of transactions that can be made"""
+enum TransactionType {
+  BUY
+  SELL
+}
+
+input UpdateTransactionInput {
+  amount: Float!
+  date: DateTime!
+  priceAtTransaction: Float!
+  transactionId: String!
+}

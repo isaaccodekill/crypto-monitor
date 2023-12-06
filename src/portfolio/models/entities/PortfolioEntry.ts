@@ -1,5 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Transaction } from "./Transaction";
+import { Field, ObjectType } from "@nestjs/graphql";
+import { BaseModel } from "src/common/models/entities/BaseModel";
 
 
 // a portfolio entry happens when a user buys or sells a coin
@@ -11,20 +13,23 @@ import { Transaction } from "./Transaction";
 // each transaction will have a date, amount, and price
 // the portfolio entry will have a amount_owned field and a price_bought field
 
-@Entity()
+@ObjectType({ implements: BaseModel })
+@Entity({ name: 'portfolio_entries' })
 export class PortfolioEntry {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
 
+    @Field(type => String)
     @Column()
     coinId: string;
 
+    @Field(type => Number)
     @Column()
     amountOwned: number;
 
+    @Field(type => Number)
     @Column()
     priceBought: number;
 
+    @Field(type => [Transaction])
     @OneToMany(() => Transaction, (transaction) => transaction.portfolioEntry)
     transactions: Transaction[];
 

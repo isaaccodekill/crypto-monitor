@@ -7,9 +7,13 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
 import { RedisClientOptions } from 'redis';
 import { CoinsModule } from './coins/coins.module';
+import { PortfolioModule } from './portfolio/portfolio.module';
+require('dotenv').config();
 
 @Module({
   imports: [
+    CoinsModule,
+    PortfolioModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       subscriptions: {
@@ -37,7 +41,6 @@ import { CoinsModule } from './coins/coins.module';
         port: parseInt(process.env.REDIS_PORT, 10),
       },
     }),
-    CoinsModule,
   ],
 })
 export class AppModule {}

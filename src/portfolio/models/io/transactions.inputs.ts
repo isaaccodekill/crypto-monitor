@@ -19,6 +19,9 @@ export class CreateTransactionInput {
 
   @Field({ nullable: false })
   type: TransactionType;
+
+  @Field({ nullable: false })
+  remarks: string;
 }
 
 @InputType()
