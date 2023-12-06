@@ -8,7 +8,11 @@ import { redisStore } from 'cache-manager-redis-yet';
 import { RedisClientOptions } from 'redis';
 import { CoinsModule } from './coins/coins.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+import PorfolioEntities  from './portfolio/models/entities';
+
+
+dotenv.config();
 
 @Module({
   imports: [
@@ -29,7 +33,7 @@ require('dotenv').config();
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [],
+      entities: [...PorfolioEntities],
       synchronize: true,
       logging: true,
       autoLoadEntities: true,

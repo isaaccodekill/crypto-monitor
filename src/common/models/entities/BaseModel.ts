@@ -1,8 +1,11 @@
-import { Field } from "@nestjs/graphql";
-import { BaseEntity, Column, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Field, Int, InterfaceType, ObjectType } from "@nestjs/graphql";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
+
+
+@InterfaceType()
+@Entity()
 export abstract class BaseModel {
-
 
     @Field(type => String)
     @PrimaryGeneratedColumn('uuid')

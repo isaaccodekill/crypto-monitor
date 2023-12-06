@@ -13,9 +13,11 @@ import { BaseModel } from "src/common/models/entities/BaseModel";
 // each transaction will have a date, amount, and price
 // the portfolio entry will have a amount_owned field and a price_bought field
 
-@ObjectType({ implements: BaseModel })
+@ObjectType({
+    implements: () => [BaseModel]
+})
 @Entity({ name: 'portfolio_entries' })
-export class PortfolioEntry {
+export class PortfolioEntry extends BaseModel {
 
     @Field(type => String)
     @Column()

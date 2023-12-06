@@ -2,11 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+interface BaseModel {
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+}
+
 input CreateTransactionInput {
   amount: Float!
   coinId: String!
   date: DateTime!
   priceAtTransaction: Float!
+  remarks: String!
   type: String!
 }
 
@@ -25,12 +32,14 @@ type Mutation {
   updateTransaction(updateTransactionInput: UpdateTransactionInput!): Transaction!
 }
 
-type PortfolioEntry {
+type PortfolioEntry implements BaseModel {
   amountOwned: Float!
   coinId: String!
+  createdAt: DateTime!
   id: String!
   priceBought: Float!
   transactions: [Transaction!]!
+  updatedAt: DateTime!
 }
 
 type Query {
@@ -38,14 +47,17 @@ type Query {
   getTransactions: [Transaction!]!
 }
 
-type Transaction {
+type Transaction implements BaseModel {
   amount: Float!
   coinId: String!
+  createdAt: DateTime!
   date: DateTime!
   id: String!
   portfolioEntry: PortfolioEntry!
   price: Float!
+  remarks: String!
   type: TransactionType!
+  updatedAt: DateTime!
 }
 
 """The type of transactions that can be made"""

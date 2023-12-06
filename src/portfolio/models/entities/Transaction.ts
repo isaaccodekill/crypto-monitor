@@ -6,9 +6,11 @@ import { type } from 'os';
 import { BaseModel } from 'src/common/models/entities/BaseModel';
 
 
-@ObjectType({ implements: BaseModel })
+@ObjectType({
+  implements: () => [BaseModel]
+})
 @Entity({ name: 'transactions'})
-export class Transaction {
+export class Transaction extends BaseModel {
 
   @Field(type => String)
   @Column()
