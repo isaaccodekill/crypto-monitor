@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { PortfolioEntry } from './PortfolioEntry';
 
 @Entity()
 export class Transaction {
@@ -16,4 +17,8 @@ export class Transaction {
 
   @Column()
   date: Date;
+
+  @ManyToOne(() => PortfolioEntry, (portfolioEntry) => portfolioEntry.transactions)
+  portfolioEntry: PortfolioEntry;
+
 }

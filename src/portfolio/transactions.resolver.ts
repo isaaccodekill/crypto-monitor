@@ -3,10 +3,13 @@ import {
   UpdateTransactionInput,
   DeleteTransactionInput,
 } from './models/io/transactions.inputs';
+import { Transaction } from './models/entities/Transaction';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { TransactionService } from './services/Transaction.service';
 
 @Resolver((of) => Transaction)
 export class TransactionsResolver {
-  constructor(private readonly transactionsService: TransactionsService) {}
+  constructor(private readonly transactionsService: TransactionService) {}
 
   @Query((returns) => [Transaction])
   async getTransactions(): Promise<Transaction[]> {

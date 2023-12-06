@@ -1,0 +1,10 @@
+- Work on getting the project to run and return an empty list of porfolio entries on graphql playground
+- Work on creating portfolio entries. 
+- Work on creating transactions, and storing them in the DB
+- Work on getting transactions to affect portfolio entries
+- Working on fetching coin data and storing then in the db
+- Implement authentication and authorization for user access
+- Add error handling and validation for input data
+- Create API endpoints for CRUD operations on portfolio entries
+- Implement data visualization for portfolio performance
+- Write unit tests for key functionalities

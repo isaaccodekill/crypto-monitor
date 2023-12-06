@@ -1,4 +1,5 @@
-import { Resolver } from '@nestjs/graphql';
+import { Resolver, Query } from '@nestjs/graphql';
+import { PortfolioEntry } from './models/entities/PortfolioEntry';
 
 @Resolver()
 export class PortfolioResolver {
