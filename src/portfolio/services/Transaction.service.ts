@@ -20,12 +20,21 @@ export class TransactionService {
 
     }
 
-    createTransaction(createTransactionDto: CreateTransactionDto): Transaction {
+    async createTransaction(createTransactionDto: CreateTransactionDto): Promise<Transaction> {
         // TODO auth check
         // TODO extract user id from request
         // TODO pass user id to repository, along with createTransactionDto
-        // TODO return transaction
-        return this.transactionRepository.createTransaction(createTransactionDto);
+
+        // create transaction in db
+
+        const transaction  = await this.transactionRepository.createTransaction(createTransactionDto);
+        
+        // check if a portfolio entry exists for this coin
+        // if not, create one
+        // if yes, update it
+
+    
+
     }
 
     updateTransaction(updateTransactionInput: any): Transaction {

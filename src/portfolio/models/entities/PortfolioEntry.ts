@@ -35,5 +35,36 @@ export class PortfolioEntry extends BaseModel {
     @OneToMany(() => Transaction, (transaction) => transaction.portfolioEntry)
     transactions: Transaction[];
 
-}
+    // Getters and Setters
+    getCoinId(): string {
+        return this.coinId;
+    }
 
+    setCoinId(coinId: string): void {
+        this.coinId = coinId;
+    }
+
+    getAmountOwned(): number {
+        return this.amountOwned;
+    }
+
+    setAmountOwned(amountOwned: number): void {
+        this.amountOwned = amountOwned;
+    }
+
+    getPriceBought(): number {
+        return this.priceBought;
+    }
+
+    setPriceBought(priceBought: number): void {
+        this.priceBought = priceBought;
+    }
+
+    getTransactions(): Transaction[] {
+        return this.transactions;
+    }
+
+    setTransactions(transactions: Transaction[]): void {
+        this.transactions = transactions;
+    }
+}

@@ -2,15 +2,15 @@ import {
   CreateTransactionInput,
   UpdateTransactionInput,
   DeleteTransactionInput,
-} from './models/io/transactions.inputs';
-import { Transaction } from './models/entities/Transaction';
+} from '../models/io/transactions.inputs';
+import { Transaction } from '../models/entities/Transaction';
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { TransactionService } from './services/Transaction.service';
-import { CreateTransactionDto } from './models/dto/Transaction/CreateTransaction';
+import { TransactionService } from '../services/Transaction.service';
+import { CreateTransactionDto } from '../models/dto/Transaction/CreateTransaction';
 
 @Resolver((of) => Transaction)
 export class TransactionsResolver {
-  constructor(private readonly transactionsService: TransactionService) {}
+  constructor(private readonly transactionsService: TransactionService) { }
 
   @Query((returns) => [Transaction])
   async getTransactions(): Promise<Transaction[]> {

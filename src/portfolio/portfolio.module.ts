@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { PortfolioResolver } from './portfolio.resolver';
-import { TransactionsResolver } from './transactions.resolver';
+import { PortfolioResolver } from './resolvers/PortfolioEntry.resolver';
+import { TransactionsResolver } from './resolvers/Transactions.resolver';
 import { TransactionService } from './services/Transaction.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Transaction } from './models/entities';
+import { PortfolioEntry, Transaction } from './models/entities';
 import { TransactionRepository } from './repositories/Transaction';
 
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Transaction])],
+    imports: [TypeOrmModule.forFeature([Transaction, PortfolioEntry])],
     providers: [
         PortfolioResolver,
         TransactionsResolver,
@@ -16,4 +16,4 @@ import { TransactionRepository } from './repositories/Transaction';
         TransactionRepository,
     ]
 })
-export class PortfolioModule {}
+export class PortfolioModule { }

@@ -17,11 +17,11 @@ export class Transaction extends BaseModel {
   coinId: string;
 
   @Field(type => Number)
-  @Column()
+  @Column('decimal')
   amount: number;
 
   @Field(type => Number)
-  @Column()
+  @Column('decimal')
   price: number;
 
   @Field(type => Date)
@@ -40,4 +40,61 @@ export class Transaction extends BaseModel {
   @Column()
   remarks: string
 
+  // Getters and Setters
+
+  getCoinId(): string {
+    return this.coinId;
+  }
+
+  setCoinId(coinId: string): void {
+    this.coinId = coinId;
+  }
+
+  getAmount(): number {
+    return this.amount;
+  }
+
+  setAmount(amount: number): void {
+    this.amount = amount;
+  }
+
+  getPrice(): number {
+    return this.price;
+  }
+
+  setPrice(price: number): void {
+    this.price = price;
+  }
+
+  getDate(): Date {
+    return this.date;
+  }
+
+  setDate(date: Date): void {
+    this.date = date;
+  }
+
+  getPortfolioEntry(): PortfolioEntry {
+    return this.portfolioEntry;
+  }
+
+  setPortfolioEntry(portfolioEntry: PortfolioEntry): void {
+    this.portfolioEntry = portfolioEntry;
+  }
+
+  getType(): TransactionType {
+    return this.type;
+  }
+
+  setType(type: TransactionType): void {
+    this.type = type;
+  }
+
+  getRemarks(): string {
+    return this.remarks;
+  }
+
+  setRemarks(remarks: string): void {
+    this.remarks = remarks;
+  }
 }
